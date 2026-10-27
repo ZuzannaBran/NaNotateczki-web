@@ -330,9 +330,9 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .mini-planner .calendar-days button.chosen:not(.today){background:var(--toolbar)}
 .mini-planner .calendar-days button.has-dot::after{display:none}
 .calendar-number{font-size:10px;line-height:1}
-.mini-calendar-entry{display:block;width:100%;height:9px;min-height:9px;border-radius:3px;background:#CADFB8}
-.mini-calendar-entry.alt{background:#7DADC8}
-.mini-calendar-entry.pink{background:#EAA6AE}
+.mini-calendar-entry{display:block;width:100%;height:9px;min-height:9px;border-radius:3px;background:var(--blue-1)}
+.mini-calendar-entry.alt{background:var(--blue-2)}
+.mini-calendar-entry.light{background:var(--blue-3)}
 .mini-study{padding:16px 18px 17px;border-top:1px solid var(--divider);background:var(--toolbar)}
 .mini-study-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
 .mini-study-heading strong{font-size:15px;font-weight:600}
@@ -348,28 +348,15 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .mini-study-phase{font-size:10px;color:var(--muted);display:block;margin:0 0 11px}
 .mini-demo-footnote{font-size:10px;line-height:1.6;color:var(--muted);padding:10px 17px 15px;margin:0}
 
-/* Real editor capabilities, described without implying the HTML simulation implements them. */
-.tools-widget{grid-column:1/-1}
-.tools-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--divider)}
-.tools-feature{padding:23px 26px 24px;min-width:0}
-.tools-feature:nth-child(odd){border-right:1px solid var(--divider)}
-.tools-feature:nth-child(n+3){border-top:1px solid var(--divider)}
-.tools-feature-icon{width:34px;height:34px;display:grid;place-items:center;background:var(--toolbar);border:1px solid var(--divider);border-radius:10px;margin-bottom:15px}
-.tools-feature-icon .ico{width:20px;height:20px}
-.tools-feature h3{font-size:15px;font-weight:600;margin:0 0 8px}
-.tools-feature p{font-size:12px;line-height:1.8;margin:0;color:var(--muted)}
-.tools-feature p strong{font-weight:600;color:var(--text)}
-.tools-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
-.tools-keywords span{font-size:10px;padding:5px 9px;background:var(--toolbar);border:1px solid var(--divider);border-radius:8px;color:var(--text)}
-.shape-demo{display:block;color:var(--blue-2);max-width:100%;width:225px;height:46px;margin-top:12px}
-:root[data-theme="dark"] .shape-demo{color:#A6CADE}
-@media(max-width:580px){
-  .tools-feature-grid{grid-template-columns:1fr}
-  .tools-feature:nth-child(odd){border-right:0}
-  .tools-feature+.tools-feature{border-top:1px solid var(--divider)}
-  .tools-feature{padding:20px 18px}
-}
-
+/* Editorial features: one clear explanation per row, no decorative badges. */
+.tools-widget{grid-column:1/-1;margin-top:clamp(44px,6vw,78px)}
+.tools-heading{padding:32px 35px 28px}
+.tools-heading h2{font-size:clamp(20px,2.3vw,27px);line-height:1.28}
+.tools-feature-list{border-top:1px solid var(--divider)}
+.tools-feature-row{display:grid;grid-template-columns:minmax(190px,.75fr) minmax(0,1.25fr);gap:clamp(26px,4vw,72px);align-items:start;padding:26px 35px}
+.tools-feature-row+.tools-feature-row{border-top:1px solid var(--divider)}
+.tools-feature-row h3{font-size:16px;font-weight:600;line-height:1.4;margin:0}
+.tools-feature-row p{font-size:13px;color:var(--muted);line-height:1.85;margin:0;max-width:660px}
 
 /* Marketing hero: layered note surfaces with room to breathe, never the editor itself. */
 .home-content{padding-top:clamp(64px,6.4vw,108px);padding-bottom:clamp(72px,7vw,112px)}
@@ -400,4 +387,48 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
   .lead{line-height:1.8;margin-bottom:28px}
   .quiet-caption{margin-top:22px}
   .content-divider{margin:42px 0 38px}
+}
+
+
+/* Widgets: notebook 01 and calendar 03 share a bottom baseline. */
+.widgets-layout{column-gap:20px;row-gap:20px;align-items:stretch}
+.widget-aside{height:100%;gap:20px}
+.writing-widget{display:flex;flex-direction:column}
+.drawing-area{flex:1;display:flex;flex-direction:column}
+.paper-sheet{flex:1;aspect-ratio:auto;min-height:300px}
+.calendar-preview-widget{flex:1;display:flex;flex-direction:column}
+.mini-planner{flex:1}
+.palette-widget .widget-heading{padding-bottom:14px}
+.palette-widget .palette-list{padding-bottom:20px}
+
+/* The preview's session card never changes height when the timer starts. */
+.mini-study{height:210px;min-height:210px;flex:0 0 210px;box-sizing:border-box}
+.mini-study #demo-timer-idle,.mini-study #demo-timer-active{min-height:120px}
+.mini-planner .calendar-days button.today{background:color-mix(in srgb,var(--blue-3) 23%,var(--paper));border-color:var(--divider)}
+.mini-planner .calendar-days button.chosen:not(.today){background:color-mix(in srgb,var(--blue-3) 12%,var(--paper))}
+
+/* The blue family stays legible against the darker notebook palette. */
+:root[data-theme="dark"] .mini-calendar-entry{background:#C5DDEC}
+:root[data-theme="dark"] .mini-calendar-entry.alt{background:#93C0E1}
+:root[data-theme="dark"] .mini-calendar-entry.light{background:#517C9C}
+
+@media(max-width:920px){
+  .tools-feature-row{grid-template-columns:minmax(145px,.65fr) minmax(0,1.35fr);gap:24px}
+  .tools-feature-row,.tools-heading{padding-left:24px;padding-right:24px}
+}
+@media(max-width:750px){
+  .widgets-layout{row-gap:20px}
+  .widget-aside{height:auto}
+  .writing-widget .drawing-area{flex:none}
+  .writing-widget .paper-sheet{flex:initial;height:auto;aspect-ratio:1.45;min-height:240px}
+  .calendar-preview-widget{flex:none}
+  .mini-planner{flex:none}
+  .tools-widget{margin-top:clamp(34px,6vw,58px)}
+}
+@media(max-width:580px){
+  .mini-study{height:210px;min-height:210px;flex-basis:210px}
+  .tools-feature-row{grid-template-columns:1fr;gap:10px;padding:22px 20px}
+  .tools-heading{padding:25px 20px 22px}
+  .tools-feature-row h3{font-size:15px}
+  .tools-feature-row p{font-size:12px}
 }
