@@ -6,6 +6,7 @@ window.NaNotateczkiConfig = {
     windows: '',
     linux: '',
     android: '',
-    macos: ''
+    macos: '',
+    ios: ''
   }
 };
