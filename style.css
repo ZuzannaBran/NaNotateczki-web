@@ -295,3 +295,68 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .has-flutter .paper-controls,.has-flutter .html-demo-note{display:none!important}
 @media(max-width:750px){.flutter-demo{padding:0 10px 12px}.flutter-demo iframe{height:590px}}
 @media(max-width:580px){.flutter-demo iframe{height:530px}}
+
+
+/* Updated sidebar: name alone; no logo, promo block or author card. */
+.brand{gap:0}
+
+/* Compact visualisation of the real Calendar/Study timer layout. */
+.calendar-preview-widget{min-width:0}
+.mini-planner{padding:0 17px 17px}
+.mini-planner-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;padding:11px 0 9px;border-bottom:1px solid var(--divider)}
+.mini-planner-top>strong{font-size:14px;font-weight:600}
+.mini-planner-modes{display:inline-flex;border:1px solid var(--divider);border-radius:10px;padding:2px;background:var(--toolbar);gap:2px}
+.mini-planner-modes>span,.mini-planner-modes>strong{padding:5px 7px;font-size:10px;font-weight:400;border-radius:8px}
+.mini-planner-modes>strong{background:var(--paper);border:1px solid var(--divider);font-weight:600}
+.mini-planner .calendar-head{margin:0 0 10px}
+.mini-planner .calendar-head strong{font-size:13px}
+.mini-planner .calendar-weekdays,.mini-planner .calendar-days{gap:0}
+.mini-planner .calendar-weekdays{margin:0;background:var(--toolbar);padding:9px 0;font-size:10px;border:1px solid var(--divider);border-radius:9px 9px 0 0;border-bottom:0}
+.mini-planner .calendar-days{border-top:1px solid var(--divider);border-left:1px solid var(--divider);border-radius:0 0 9px 9px;overflow:hidden}
+.mini-planner .calendar-days button{min-width:0;height:44px;border:0;border-right:1px solid var(--divider);border-bottom:1px solid var(--divider);border-radius:0;padding:5px 3px;display:flex;flex-direction:column;gap:5px;align-items:flex-start;justify-content:flex-start;font-family:inherit}
+.mini-planner .calendar-days button:hover{background:var(--toolbar)}
+.mini-planner .calendar-days button.outside{opacity:1;background:var(--toolbar);color:var(--muted)}
+.mini-planner .calendar-days button.today{background:var(--background);border-color:var(--divider);font-weight:700}
+.mini-planner .calendar-days button.chosen{box-shadow:inset 0 0 0 2px var(--muted);border-color:var(--divider)}
+.mini-planner .calendar-days button.chosen:not(.today){background:var(--toolbar)}
+.mini-planner .calendar-days button.has-dot::after{display:none}
+.calendar-number{font-size:10px;line-height:1}
+.mini-calendar-entry{display:block;width:100%;height:9px;min-height:9px;border-radius:3px;background:#CADFB8}
+.mini-calendar-entry.alt{background:#7DADC8}
+.mini-calendar-entry.pink{background:#EAA6AE}
+.mini-study{padding:16px 18px 17px;border-top:1px solid var(--divider);background:var(--toolbar)}
+.mini-study-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.mini-study-heading strong{font-size:15px;font-weight:600}
+.mini-study-heading .ico{width:19px;height:19px;opacity:.75}
+.mini-study p{font-size:11px;color:var(--muted);line-height:1.65;margin:0 0 13px}
+.mini-study-actions{display:flex;gap:8px}
+.mini-study-actions button{flex:1;min-width:0;min-height:34px;border:1px solid var(--divider);border-radius:12px;background:var(--paper);font-family:inherit;font-size:11px;color:var(--text);display:flex;align-items:center;justify-content:center;gap:6px;padding:5px;cursor:pointer}
+.mini-study-actions button:hover{background:var(--selected)}
+.mini-study-actions button.mini-study-primary{background:var(--selected);font-weight:600}
+.mini-study-actions button .ico{width:15px;height:15px}
+.mini-study-name{margin:0 0 3px!important;color:var(--text)!important}
+.mini-study-countdown{display:block;font-size:22px;line-height:1.4;font-weight:600;font-variant-numeric:tabular-nums;margin:0 0 3px}
+.mini-study-phase{font-size:10px;color:var(--muted);display:block;margin:0 0 11px}
+.mini-demo-footnote{font-size:10px;line-height:1.6;color:var(--muted);padding:10px 17px 15px;margin:0}
+
+/* Real editor capabilities, described without implying the HTML simulation implements them. */
+.tools-widget{grid-column:1/-1}
+.tools-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--divider)}
+.tools-feature{padding:23px 26px 24px;min-width:0}
+.tools-feature:nth-child(odd){border-right:1px solid var(--divider)}
+.tools-feature:nth-child(n+3){border-top:1px solid var(--divider)}
+.tools-feature-icon{width:34px;height:34px;display:grid;place-items:center;background:var(--toolbar);border:1px solid var(--divider);border-radius:10px;margin-bottom:15px}
+.tools-feature-icon .ico{width:20px;height:20px}
+.tools-feature h3{font-size:15px;font-weight:600;margin:0 0 8px}
+.tools-feature p{font-size:12px;line-height:1.8;margin:0;color:var(--muted)}
+.tools-feature p strong{font-weight:600;color:var(--text)}
+.tools-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tools-keywords span{font-size:10px;padding:5px 9px;background:var(--toolbar);border:1px solid var(--divider);border-radius:8px;color:var(--text)}
+.shape-demo{display:block;color:var(--blue-2);max-width:100%;width:225px;height:46px;margin-top:12px}
+:root[data-theme="dark"] .shape-demo{color:#A6CADE}
+@media(max-width:580px){
+  .tools-feature-grid{grid-template-columns:1fr}
+  .tools-feature:nth-child(odd){border-right:0}
+  .tools-feature+.tools-feature{border-top:1px solid var(--divider)}
+  .tools-feature{padding:20px 18px}
+}
