@@ -20,6 +20,10 @@
   --text:#EEECE6;--divider:#73746F;--selected:#4A4B48;
   --muted:#C6C6BE;--soft-border:#62635E;--shadow:0 14px 38px rgba(0,0,0,.15);
   --line-ink:rgba(221,225,221,.19);
+  /* Original AppColors.displayInkColor: HSL lightness -> 1 - lightness. */
+  --blue-1:#C5E4FC;--blue-2:#96CDF7;--blue-3:#376782;
+  --pink-1:#C37D85;--pink-2:#862738;--pink-3:#59151D;
+  --green-1:#CBD9CA;--green-2:#9DBAA6;--green-3:#324720;
   --hero-elevation:rgba(0,0,0,.38);
   --hero-elevation-soft:rgba(0,0,0,.21);
   --hero-halo:rgba(125,173,200,.09);
@@ -40,7 +44,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{o
 .app-shell{min-height:100vh;display:grid;grid-template-columns:320px minmax(0,1fr)}
 .sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;min-width:0;background:var(--toolbar);border-right:1px solid var(--divider);z-index:15}
 .sidebar-header{height:56px;min-height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 23px;border-bottom:1px solid var(--divider)}
-.brand{display:flex;align-items:center;gap:12px;font-size:17px;white-space:nowrap;font-weight:600;letter-spacing:-.4px}
+.brand{display:flex;align-items:center;gap:12px;font-size:18px;white-space:nowrap;font-weight:600;letter-spacing:normal}
 .brand-mark{border:1.5px solid currentColor;width:30px;height:30px;border-radius:8px;font-family:Georgia,serif;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-style:italic;letter-spacing:-4px;padding-right:4px}
 .brand-pen{transform:translateY(1px)}
 .sidebar-scroll{flex:1;overflow:auto;padding:29px 14px 20px;scrollbar-width:none}
@@ -192,7 +196,16 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .palette-choice:hover{background:var(--toolbar)}
 .palette-choice.selected{border-color:var(--divider);background:var(--toolbar)}
 .palette-dots{display:flex;gap:7px}
-.palette-dots i{width:21px;height:21px;border-radius:50%;background:var(--dot);border:1px solid rgba(0,0,0,.05)}
+.palette-dots i{width:21px;height:21px;border-radius:50%;border:1px solid color-mix(in srgb,var(--text) 12%,transparent)}
+.palette-choice[data-palette="blue"] .palette-dots i:nth-child(1){background:var(--blue-1)}
+.palette-choice[data-palette="blue"] .palette-dots i:nth-child(2){background:var(--blue-2)}
+.palette-choice[data-palette="blue"] .palette-dots i:nth-child(3){background:var(--blue-3)}
+.palette-choice[data-palette="pink"] .palette-dots i:nth-child(1){background:var(--pink-1)}
+.palette-choice[data-palette="pink"] .palette-dots i:nth-child(2){background:var(--pink-2)}
+.palette-choice[data-palette="pink"] .palette-dots i:nth-child(3){background:var(--pink-3)}
+.palette-choice[data-palette="green"] .palette-dots i:nth-child(1){background:var(--green-1)}
+.palette-choice[data-palette="green"] .palette-dots i:nth-child(2){background:var(--green-2)}
+.palette-choice[data-palette="green"] .palette-dots i:nth-child(3){background:var(--green-3)}
 .board-sample{padding:0 18px}
 .board-grid{height:210px;position:relative;border:1px solid var(--divider);border-radius:8px;background-color:var(--background);background-image:radial-gradient(var(--divider) .8px,transparent .8px);background-size:17px 17px;overflow:hidden}
 .board-node{position:absolute;border:1px solid var(--divider);border-radius:9px;background:var(--paper);padding:13px 18px;min-width:88px;text-align:center;z-index:1;box-shadow:0 2px 4px rgba(0,0,0,.025);font-size:12px}
@@ -407,10 +420,11 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .mini-planner .calendar-days button.today{background:color-mix(in srgb,var(--blue-3) 23%,var(--paper));border-color:var(--divider)}
 .mini-planner .calendar-days button.chosen:not(.today){background:color-mix(in srgb,var(--blue-3) 12%,var(--paper))}
 
-/* The blue family stays legible against the darker notebook palette. */
-:root[data-theme="dark"] .mini-calendar-entry{background:#C5DDEC}
-:root[data-theme="dark"] .mini-calendar-entry.alt{background:#93C0E1}
-:root[data-theme="dark"] .mini-calendar-entry.light{background:#517C9C}
+/* Dark mode uses the original application's inverted blue scale.
+   The session/event strips sit on the dark UI surface like planner cards. */
+:root[data-theme="dark"] .mini-calendar-entry{background:color-mix(in srgb,var(--blue-1) 72%,var(--toolbar))}
+:root[data-theme="dark"] .mini-calendar-entry.alt{background:color-mix(in srgb,var(--blue-2) 72%,var(--toolbar))}
+:root[data-theme="dark"] .mini-calendar-entry.light{background:color-mix(in srgb,var(--blue-3) 72%,var(--toolbar))}
 
 @media(max-width:920px){
   .tools-feature-row{grid-template-columns:minmax(145px,.65fr) minmax(0,1.35fr);gap:24px}
@@ -432,3 +446,29 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
   .tools-feature-row h3{font-size:15px}
   .tools-feature-row p{font-size:12px}
 }
+
+
+/* In the Flutter dark theme, controls are a darker surface than the canvas.
+   The editor preview, planner and palette share that visual hierarchy. */
+:root[data-theme="dark"] .widget-panel{background:var(--toolbar);border-color:var(--divider)}
+:root[data-theme="dark"] .widget-heading{color:var(--text)}
+:root[data-theme="dark"] .palette-choice.selected{background:var(--selected);border-color:var(--divider)}
+:root[data-theme="dark"] .palette-choice:hover{background:var(--selected)}
+:root[data-theme="dark"] .drawing-toolbar{background:var(--selected)}
+:root[data-theme="dark"] .drawing-area{background:var(--toolbar)}
+:root[data-theme="dark"] .paper-sheet{background-color:#50514D}
+:root[data-theme="dark"] .paper-controls{background:var(--toolbar)}
+:root[data-theme="dark"] .segmented{background:var(--selected)}
+:root[data-theme="dark"] .segmented button.active{background:var(--paper)}
+:root[data-theme="dark"] .mini-planner-modes{background:var(--selected)}
+:root[data-theme="dark"] .mini-planner-modes>strong{background:var(--paper)}
+:root[data-theme="dark"] .mini-planner .calendar-weekdays{background:var(--selected)}
+:root[data-theme="dark"] .mini-planner .calendar-days button.outside{background:var(--selected)}
+:root[data-theme="dark"] .mini-planner .calendar-days button.today{background:var(--paper);border-color:var(--divider)}
+:root[data-theme="dark"] .mini-planner .calendar-days button.chosen:not(.today){background:var(--selected)}
+:root[data-theme="dark"] .mini-planner .calendar-days button:hover{background:var(--selected)}
+:root[data-theme="dark"] .mini-study{background:var(--selected)}
+:root[data-theme="dark"] .mini-study-actions button{background:var(--toolbar)}
+:root[data-theme="dark"] .mini-study-actions button:hover,
+:root[data-theme="dark"] .mini-study-actions button.mini-study-primary{background:var(--paper)}
+:root[data-theme="dark"] .tools-feature-list{border-color:var(--divider)}
