@@ -95,7 +95,7 @@
                 <div class="paper-controls"><span class="control-title">Tło strony</span><div class="segmented" role="group" aria-label="Rodzaj tła"><button type="button" data-background="blank">Gładkie</button><button type="button" data-background="grid">Kratka</button><button type="button" data-background="lines" class="active">Linie</button></div><label class="density-label" for="background-density">Gęstość <input id="background-density" type="range" min="20" max="44" value="28" step="2"></label></div>
               </article>
               <div class="widget-aside">
-                <article class="widget-panel palette-widget"><div class="widget-heading"><div><span class="panel-number">02 / KOLORY</span><h2>Zestawy kolorów</h2></div></div><p class="panel-desc">Trzy stopnie kontrastu — zgodne z paletami narzędzi w aplikacji.</p><div class="palette-list"><button type="button" class="palette-choice selected" data-palette="blue"><span>Niebieski</span><span class="palette-dots"><i style="--dot:#03223A"></i><i style="--dot:#083F69"></i><i style="--dot:#7DADC8"></i></span></button><button type="button" class="palette-choice" data-palette="pink"><span>Różowy</span><span class="palette-dots"><i style="--dot:#823C44"></i><i style="--dot:#D8798A"></i><i style="--dot:#EAA6AE"></i></span></button><button type="button" class="palette-choice" data-palette="green"><span>Zielony</span><span class="palette-dots"><i style="--dot:#273526"></i><i style="--dot:#45624E"></i><i style="--dot:#CADFB8"></i></span></button></div></article>
+                <article class="widget-panel palette-widget"><div class="widget-heading"><div><span class="panel-number">02 / KOLORY</span><h2>Zestawy kolorów</h2></div></div><div class="palette-list"><button type="button" class="palette-choice selected" data-palette="blue"><span>Niebieski</span><span class="palette-dots"><i style="--dot:#03223A"></i><i style="--dot:#083F69"></i><i style="--dot:#7DADC8"></i></span></button><button type="button" class="palette-choice" data-palette="pink"><span>Różowy</span><span class="palette-dots"><i style="--dot:#823C44"></i><i style="--dot:#D8798A"></i><i style="--dot:#EAA6AE"></i></span></button><button type="button" class="palette-choice" data-palette="green"><span>Zielony</span><span class="palette-dots"><i style="--dot:#273526"></i><i style="--dot:#45624E"></i><i style="--dot:#CADFB8"></i></span></button></div></article>
                 <article class="widget-panel calendar-preview-widget" id="widget-calendar">
                   <div class="widget-heading"><div><span class="panel-number">03 / KALENDARZ I NAUKA</span><h2>Kalendarz i study sessions</h2></div></div>
                   <div class="mini-planner">
@@ -118,17 +118,30 @@
                   <p class="mini-demo-footnote">Przykładowy kalendarz i timer. Bez zapisu sesji do aplikacji.</p>
                 </article>
               </div>
-              <article class="widget-panel tools-widget" id="widget-tools">
-                <div class="widget-heading"><div><span class="panel-number">04 / NARZĘDZIA EDYTORA</span><h2>Od swobodnego pisania do gotowej notatki</h2></div></div>
-                <div class="tools-feature-grid">
-                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-eraser"></use></svg></div><h3>Trzy sposoby wymazywania</h3><p><strong>Gumka pędzlowa</strong> usuwa fragment kreski, <strong>gumka do kreski</strong> usuwa ją w całości, a <strong>gumka obszarowa</strong> pozwala zamazać zaznaczony ruchem obszar.</p><div class="tools-keywords"><span>Pędzel</span><span>Kreska</span><span>Obszar</span></div></div>
-                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-shape"></use></svg></div><h3>Prostowanie i kształty</h3><p>Rysuj odręcznie i <strong>przytrzymaj rysik na końcu ruchu</strong>, aby rozpoznać linię lub obsługiwany kształt. Możesz też wstawiać precyzyjne linie, strzałki, prostokąty, trójkąty i okręgi z paska narzędzi.</p><svg class="shape-demo" aria-label="Przykładowa prosta, prostokąt i okrąg" viewBox="0 0 270 42" role="img"><path d="M9 31 L78 10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="103" y="7" width="62" height="27" rx="1" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="220" cy="21" r="16" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
-                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-notebook"></use></svg></div><h3>Dodawanie i edycja dokumentów</h3><p>Wstawiaj <strong>PDF-y i obrazy</strong> do notatki, zmieniaj ich położenie i rozmiar oraz dodawaj do nich własne pismo, zaznaczenia i tekst.</p><div class="tools-keywords"><span>PDF</span><span>Obrazy</span><span>Tekst</span></div></div>
-                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-download"></use></svg></div><h3>Eksport notatek</h3><p>Zapisuj efekty pracy jako <strong>PDF lub PNG</strong>. Eksport uwzględnia zawartość stron oraz aktualny wygląd notatnika.</p><div class="tools-keywords"><span>PDF</span><span>PNG</span></div></div>
+              <article class="widget-panel tools-widget" id="widget-tools" aria-labelledby="tools-title">
+                <div class="widget-heading tools-heading">
+                  <div><span class="panel-number">04 / MOŻLIWOŚCI EDYTORA</span><h2 id="tools-title">Więcej niż odręczne pismo.</h2></div>
+                </div>
+                <div class="tools-feature-list">
+                  <div class="tools-feature-row">
+                    <h3>Cztery sposoby wymazywania</h3>
+                    <p>Usuwaj fragmenty gumką pędzlową, całe kreski gumką kreskową, wybrany zakres gumką obszarową albo zamazuj niepotrzebne pismo bazgrołami.</p>
+                  </div>
+                  <div class="tools-feature-row">
+                    <h3>Linie i kształty</h3>
+                    <p>Przytrzymaj rysik po narysowaniu, aby wyprostować linię lub rozpoznać kształt. Precyzyjne figury i strzałki możesz też dodawać z paska narzędzi.</p>
+                  </div>
+                  <div class="tools-feature-row">
+                    <h3>Dokumenty i obrazy</h3>
+                    <p>Dodawaj pliki PDF i zdjęcia do notatników, zmieniaj ich rozmiar i położenie oraz nanoś własne odręczne uwagi i tekst.</p>
+                  </div>
+                  <div class="tools-feature-row">
+                    <h3>Eksport notatek</h3>
+                    <p>Eksportuj gotowe strony do PDF lub PNG, zachowując notatki i ich wygląd.</p>
+                  </div>
                 </div>
               </article>
             </div>
-            <p class="demo-disclaimer">Notatnik automatycznie użyje oryginalnego edytora Flutter, gdy jego skompilowane pliki zostaną opublikowane w katalogu <code>demo/</code>. Pozostałe widżety to wizualizacje.</p>
           </div>
         </section>
         <section class="view" id="page-pobierz" aria-labelledby="download-heading" hidden>
