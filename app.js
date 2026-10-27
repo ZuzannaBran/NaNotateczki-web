@@ -282,6 +282,7 @@
     const offset = (new Date(year, month, 1).getDay() + 6) % 7;
     const days = new Date(year, month + 1, 0).getDate();
     const count = Math.ceil((offset + days) / 7) * 7;
+    const entries = {5: 'Wydarzenie', 12: 'Sesja nauki', 19: 'Sesja nauki', 27: 'Wydarzenie'};
     for (let index = 0; index < count; index++) {
       const day = index - offset + 1;
       const date = new Date(year, month, day);
@@ -291,12 +292,23 @@
         month === today.getMonth() && day === today.getDate();
       const button = document.createElement('button');
       button.type = 'button';
-      button.textContent = String(number);
-      button.setAttribute('aria-label', number + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear());
+      const description = inMonth ? entries[day] : null;
+      button.setAttribute('aria-label', number + ' ' + monthNames[date.getMonth()] +
+        ' ' + date.getFullYear() + (description ? ', przykład: ' + description : ''));
       if (!inMonth) button.classList.add('outside');
       if (sameToday) button.classList.add('today');
       if (inMonth && selectedDate === day) button.classList.add('chosen');
-      if (inMonth && [5, 12, 19, 27].includes(day)) button.classList.add('has-dot');
+      const label = document.createElement('span');
+      label.className = 'calendar-number';
+      label.textContent = String(number);
+      button.appendChild(label);
+      if (description) {
+        const bar = document.createElement('span');
+        bar.className = 'mini-calendar-entry' +
+          (day === 12 ? ' alt' : day === 27 ? ' pink' : '');
+        bar.setAttribute('aria-hidden', 'true');
+        button.appendChild(bar);
+      }
       button.addEventListener('click', () => {
         displayMonth = new Date(date.getFullYear(), date.getMonth(), 1);
         selectedDate = number;
@@ -316,6 +328,51 @@
     renderCalendar();
   });
   renderCalendar();
+
+  // Independent timer preview, not part of the Flutter planner or user account.
+  let demoInterval = null;
+  let demoSeconds = 0;
+  let demoPaused = false;
+  function updateDemoTime() {
+    $('#demo-session-time').textContent =
+      String(Math.floor(demoSeconds / 60)).padStart(2, '0') + ':' +
+      String(demoSeconds % 60).padStart(2, '0');
+    $('#demo-pause-session').textContent = demoPaused ? 'Resume' : 'Pause';
+  }
+  function stopDemo() {
+    if (demoInterval !== null) window.clearInterval(demoInterval);
+    demoInterval = null;
+    $('#demo-timer-idle').hidden = false;
+    $('#demo-timer-active').hidden = true;
+  }
+  function startDemo(smart) {
+    stopDemo();
+    demoSeconds = (smart ? 25 : 50) * 60;
+    demoPaused = false;
+    $('#demo-session-name').textContent = smart ? 'Smart — przykładowy blok' : 'Powtórka materiału';
+    $('#demo-session-phase').textContent = smart ? 'Focus · 1/2' : 'Focus';
+    $('#demo-timer-idle').hidden = true;
+    $('#demo-timer-active').hidden = false;
+    updateDemoTime();
+    demoInterval = window.setInterval(() => {
+      if (demoPaused) return;
+      demoSeconds = Math.max(0, demoSeconds - 1);
+      updateDemoTime();
+      if (demoSeconds === 0) {
+        window.clearInterval(demoInterval);
+        demoInterval = null;
+        $('#demo-session-phase').textContent = 'Przykładowy blok zakończony';
+      }
+    }, 1000);
+  }
+  $('#demo-start-session').addEventListener('click', () => startDemo(false));
+  $('#demo-smart-session').addEventListener('click', () => startDemo(true));
+  $('#demo-pause-session').addEventListener('click', () => {
+    if (demoSeconds <= 0) return;
+    demoPaused = !demoPaused;
+    updateDemoTime();
+  });
+  $('#demo-stop-session').addEventListener('click', stopDemo);
 
   // URLs are deliberately absent until an official web build / installer is published.
   // Never fabricate an installation link and never enable javascript: links.
