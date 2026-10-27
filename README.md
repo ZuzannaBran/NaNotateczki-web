@@ -14,6 +14,7 @@ W pliku `config.js` ustaw adres webowej wersji aplikacji oraz adresy plików ins
 - `downloads.windows`: adres instalatora Windows (.exe lub .msi).
 - `downloads.linux`: adres pakietu Linux (.AppImage lub .deb).
 - `downloads.android`: adres pliku Android (.apk).
+- `downloads.ios`: adres oficjalnej wersji iOS/iPadOS w App Store lub zaproszenia TestFlight (po publikacji).
 - `downloads.macos`: adres instalatora macOS (.dmg lub .pkg).
 
 Instalatory można umieścić w GitHub Releases repozytorium projektu, a następnie wpisać ich bezpośrednie adresy w `config.js`. Publikacja statyczna może być wykonana przez GitHub Pages z gałęzi `main`, katalog root; trzeba ją włączyć w ustawieniach repozytorium. Strona nie uruchamia GitHub Actions.
