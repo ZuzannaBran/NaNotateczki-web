@@ -329,42 +329,88 @@
   });
   renderCalendar();
 
-  // Independent timer preview, not part of the Flutter planner or user account.
+  // Standalone Pomodoro demonstration: no planner records or account access.
   let demoInterval = null;
   let demoSeconds = 0;
   let demoPaused = false;
+  let demoSmart = false;
+  let demoRound = 1;
+  let demoBreak = false;
+  const demoFocusSeconds = 25 * 60;
+  const demoBreakSeconds = 5 * 60;
+  const demoRounds = 2;
+
   function updateDemoTime() {
     $('#demo-session-time').textContent =
       String(Math.floor(demoSeconds / 60)).padStart(2, '0') + ':' +
       String(demoSeconds % 60).padStart(2, '0');
     $('#demo-pause-session').textContent = demoPaused ? 'Resume' : 'Pause';
   }
+
+  function updateDemoPhase() {
+    if (!demoSmart) {
+      $('#demo-session-phase').textContent = 'Focus · 50 min';
+      return;
+    }
+    $('#demo-session-phase').textContent = demoBreak
+      ? 'Pomodoro · Break 5 min'
+      : 'Pomodoro · Focus ' + demoRound + '/' + demoRounds;
+  }
+
   function stopDemo() {
     if (demoInterval !== null) window.clearInterval(demoInterval);
     demoInterval = null;
+    demoSmart = false;
+    demoBreak = false;
+    demoRound = 1;
+    demoPaused = false;
+    $('#demo-pomodoro-tag').hidden = true;
     $('#demo-timer-idle').hidden = false;
     $('#demo-timer-active').hidden = true;
   }
+
+  function advanceDemoPhase() {
+    if (demoSmart && !demoBreak && demoRound < demoRounds) {
+      demoBreak = true;
+      demoSeconds = demoBreakSeconds;
+    } else if (demoSmart && demoBreak) {
+      demoBreak = false;
+      demoRound += 1;
+      demoSeconds = demoFocusSeconds;
+    } else {
+      if (demoInterval !== null) window.clearInterval(demoInterval);
+      demoInterval = null;
+      $('#demo-session-phase').textContent = demoSmart
+        ? 'Pomodoro · sesja zakończona'
+        : 'Sesja zakończona';
+      updateDemoTime();
+      $('#demo-pause-session').disabled = true;
+      return;
+    }
+    updateDemoPhase();
+    updateDemoTime();
+  }
+
   function startDemo(smart) {
     stopDemo();
-    demoSeconds = (smart ? 25 : 50) * 60;
-    demoPaused = false;
-    $('#demo-session-name').textContent = smart ? 'Smart — przykładowy blok' : 'Powtórka materiału';
-    $('#demo-session-phase').textContent = smart ? 'Focus · 1/2' : 'Focus';
+    demoSmart = smart;
+    demoSeconds = smart ? demoFocusSeconds : 50 * 60;
+    $('#demo-session-name').textContent =
+      smart ? 'Smart session · Pomodoro 25/5' : 'Powtórka materiału';
+    $('#demo-pomodoro-tag').hidden = !smart;
+    $('#demo-pause-session').disabled = false;
     $('#demo-timer-idle').hidden = true;
     $('#demo-timer-active').hidden = false;
+    updateDemoPhase();
     updateDemoTime();
     demoInterval = window.setInterval(() => {
       if (demoPaused) return;
       demoSeconds = Math.max(0, demoSeconds - 1);
-      updateDemoTime();
-      if (demoSeconds === 0) {
-        window.clearInterval(demoInterval);
-        demoInterval = null;
-        $('#demo-session-phase').textContent = 'Przykładowy blok zakończony';
-      }
+      if (demoSeconds === 0) advanceDemoPhase();
+      else updateDemoTime();
     }, 1000);
   }
+
   $('#demo-start-session').addEventListener('click', () => startDemo(false));
   $('#demo-smart-session').addEventListener('click', () => startDemo(true));
   $('#demo-pause-session').addEventListener('click', () => {
