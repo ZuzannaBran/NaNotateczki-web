@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#E4E2DD">
+  <meta name="description" content="NaNotateczki — notatniki, tablice, planowanie nauki i odręczne notatki w jednym miejscu. Poznaj funkcje, wypróbuj wersję web i pobierz aplikację.">
+  <title>NaNotateczki — notatki, tablice i plan nauki</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <div class="app-shell">
+    <div class="mobile-shade" id="mobile-shade" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Nawigacja">
+      <div class="sidebar-header">
+        <a href="#start" class="brand" aria-label="NaNotateczki — strona główna"><span class="brand-mark" aria-hidden="true">N<span class="brand-pen">N</span></span><span>NaNotateczki</span></a>
+        <button class="icon-button mobile-close" type="button" id="close-menu" aria-label="Zamknij menu"><svg class="ico"><use href="#i-close"></use></svg></button>
+      </div>
+      <div class="sidebar-scroll">
+        <p class="nav-label">Strona projektu</p>
+        <nav class="nav-list" aria-label="Zakładki">
+          <a class="nav-link is-active" href="#start" data-route="start" aria-current="page"><svg class="ico"><use href="#i-home"></use></svg><span>Strona główna</span></a>
+          <a class="nav-link" href="#widgets" data-route="widgets"><svg class="ico"><use href="#i-grid"></use></svg><span>Widgets</span></a>
+          <a class="nav-link" href="#pobierz" data-route="pobierz"><svg class="ico"><use href="#i-download"></use></svg><span>Wypróbuj i pobierz</span></a>
+          <a class="nav-link" href="#kontakt" data-route="kontakt"><svg class="ico"><use href="#i-mail"></use></svg><span>Kontakt</span></a>
+        </nav>
+        <div class="side-separator"></div>
+        <p class="nav-label">NaNotateczki</p>
+        <div class="project-note">
+          <span class="project-note-icon"><svg class="ico"><use href="#i-notebook"></use></svg></span>
+          <div><strong>Własna przestrzeń do pracy</strong><span>Notatniki · Tablice · Kalendarz</span></div>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <div class="small-credit"><span class="credit-avatar">ZB</span><span>Projekt i wykonanie<strong>Zuzanna Baran</strong></span></div>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-left"><button class="icon-button menu-trigger" type="button" id="open-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Otwórz menu"><svg class="ico"><use href="#i-menu"></use></svg></button><span id="section-title">Strona główna</span></div>
+        <div class="topbar-right"><span class="topbar-caption">Projekt NaNotateczki</span><span class="topbar-divider"></span><button class="icon-button theme-toggle" type="button" id="theme-toggle" title="Zmień motyw" aria-label="Przełącz tryb jasny i ciemny"><svg class="ico"><use href="#i-moon"></use></svg></button></div>
+      </header>
+      <main id="main" tabindex="-1">
+        <section class="view is-visible" id="page-start" aria-labelledby="home-heading">
+          <div class="home-content">
+            <div class="hero-grid">
+              <div class="hero-copy">
+                <div class="eyebrow"><span class="eyebrow-line"></span> NOTATKI / NAUKA / POMYSŁY</div>
+                <h1 id="home-heading">Wszystko, co warto <em>zapisać.</em></h1>
+                <p class="lead">NaNotateczki to aplikacja do pisania odręcznego, tworzenia notatników, pracy na tablicach i organizacji nauki. Bez zbędnych elementów — w jednym, uporządkowanym miejscu.</p>
+                <div class="hero-actions"><a class="btn btn-primary" href="#widgets">Poznaj możliwości <svg class="ico"><use href="#i-arrow-right"></use></svg></a><a class="btn btn-outline" href="#pobierz">Wypróbuj aplikację</a></div>
+                <p class="quiet-caption"><svg class="ico tiny"><use href="#i-check"></use></svg> Komputer · Tablet · Telefon</p>
+              </div>
+              <div class="hero-preview" aria-label="Wizualizacja edytora NaNotateczki">
+                <div class="preview-window">
+                  <div class="preview-window-head"><span class="preview-window-label"><svg class="ico"><use href="#i-notebook"></use></svg> Moje notatki <span class="head-dot">/</span> Chemia</span><span class="window-actions"><svg class="ico"><use href="#i-minus"></use></svg><svg class="ico"><use href="#i-expand"></use></svg></span></div>
+                  <div class="mini-toolbar" aria-hidden="true">
+                    <span class="mini-tool selected"><svg class="ico"><use href="#i-pen"></use></svg></span><span class="mini-tool"><svg class="ico"><use href="#i-highlighter"></use></svg></span><span class="mini-tool"><svg class="ico"><use href="#i-eraser"></use></svg></span><span class="mini-tool"><svg class="ico"><use href="#i-shape"></use></svg></span><span class="mini-tool"><svg class="ico"><use href="#i-text"></use></svg></span><span class="toolbar-gap"></span><span class="mini-color color-blue1"></span><span class="mini-color color-blue2"></span><span class="mini-color color-blue3"></span><span class="mini-tool"><svg class="ico"><use href="#i-undo"></use></svg></span>
+                  </div>
+                  <div class="preview-paper">
+                    <div class="preview-date">NOTATNIK / 01</div>
+                    <div class="preview-note-title">Moje notatki</div>
+                    <div class="preview-note-underline"></div>
+                    <div class="preview-handwriting" aria-hidden="true"><svg viewBox="0 0 440 150" role="img"><path d="M13 101 C33 63 28 50 30 89 C32 134 54 41 69 36 C64 67 60 104 67 105 C75 101 83 68 94 69 C103 71 90 112 103 108 C122 106 135 67 142 64 C151 61 132 109 150 104 C169 99 176 68 181 56 C182 48 171 101 186 104 C201 108 208 80 219 77 C231 76 204 113 222 109 C237 106 242 61 247 55 C247 89 249 104 259 103 C273 101 276 67 289 65 C297 62 285 104 295 105 C308 106 317 68 327 67 C338 66 321 106 333 104 C348 103 358 69 373 58 C376 73 362 105 381 106 C391 108 395 94 399 89" fill="none" stroke="#03223A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <div class="preview-example-text">Pisz, zaznaczaj i porządkuj własne pomysły.</div>
+                    <div class="preview-highlight"></div>
+                    <div class="preview-shape"></div>
+                  </div>
+                  <div class="preview-bottom"><span>Strona 1</span><span>100% <svg class="ico tiny"><use href="#i-expand"></use></svg></span></div>
+                </div>
+                <span class="preview-subtext">Podgląd inspirowany interfejsem aplikacji</span>
+              </div>
+            </div>
+            <div class="content-divider"></div>
+            <div class="intro-section"><div><p class="section-kicker">CO ZNAJDZIESZ W APLIKACJI</p><h2>Jedno miejsce. Różne sposoby pracy.</h2></div><p>Od szybkiej notatki po większy projekt — wybierasz przestrzeń, która pasuje do zadania.</p></div>
+            <div class="feature-grid">
+              <a class="feature-card" href="#widgets" data-feature="notebook"><div class="feature-icon"><svg class="ico"><use href="#i-notebook"></use></svg></div><h3>Notatniki</h3><p>Odręczne pismo, tekst, zakreślacze, obrazy i dokumenty PDF.</p><span class="feature-more">Zobacz widget <svg class="ico"><use href="#i-arrow-right"></use></svg></span></a>
+              <a class="feature-card" href="#widgets" data-feature="board"><div class="feature-icon"><svg class="ico"><use href="#i-board"></use></svg></div><h3>Tablice</h3><p>Swobodna przestrzeń na schematy, rysunki i połączone pomysły.</p><span class="feature-more">Zobacz widget <svg class="ico"><use href="#i-arrow-right"></use></svg></span></a>
+              <a class="feature-card" href="#widgets" data-feature="calendar"><div class="feature-icon"><svg class="ico"><use href="#i-calendar"></use></svg></div><h3>Kalendarz i nauka</h3><p>Sesje nauki, wydarzenia i zadania zebrane w jednym widoku.</p><span class="feature-more">Zobacz widget <svg class="ico"><use href="#i-arrow-right"></use></svg></span></a>
+            </div>
+            <div class="bottom-cta"><div><p class="section-kicker">NA WŁASNYCH ZASADACH</p><h2>Sprawdź, jak pracuje NaNotateczki.</h2></div><a class="btn btn-outline" href="#pobierz">Przejdź do wersji web <svg class="ico"><use href="#i-arrow-right"></use></svg></a></div>
+          </div>
+        </section>
+        <section class="view" id="page-widgets" aria-labelledby="widgets-heading" hidden>
+          <div class="page-content">
+            <div class="page-intro"><p class="section-kicker">PODGLĄD NARZĘDZI</p><h1 id="widgets-heading">Widgets</h1><p>Wybrane elementy aplikacji pokazane w jej własnym stylu. Możesz zmienić tło kartki, kolor pisma i przetestować proste rysowanie.</p></div>
+            <div class="widgets-layout">
+              <article class="widget-panel writing-widget" id="widget-notebook"><div class="widget-heading"><div><span class="panel-number">01 / NOTATNIK</span><h2>Pismo i tło strony</h2></div><span class="panel-info">Interaktywny podgląd</span></div>
+                <div class="drawing-toolbar">
+                  <div class="tool-set" role="group" aria-label="Narzędzie rysowania"><button class="tool-btn active" type="button" data-tool="pen" title="Pióro" aria-label="Pióro"><svg class="ico"><use href="#i-pen"></use></svg></button><button class="tool-btn" type="button" data-tool="highlighter" title="Zakreślacz" aria-label="Zakreślacz"><svg class="ico"><use href="#i-highlighter"></use></svg></button><button class="tool-btn" type="button" data-tool="eraser" title="Gumka" aria-label="Gumka"><svg class="ico"><use href="#i-eraser"></use></svg></button></div>
+                  <span class="toolbar-sep"></span><div class="quick-colors" aria-label="Kolory narzędzia"><button class="swatch blue1 current" type="button" data-color="#03223A" aria-label="Granatowy ciemny" title="Granatowy ciemny"></button><button class="swatch blue2" type="button" data-color="#083F69" aria-label="Granatowy średni" title="Granatowy średni"></button><button class="swatch blue3" type="button" data-color="#7DADC8" aria-label="Niebieski jasny" title="Niebieski jasny"></button></div>
+                  <span class="toolbar-sep"></span><label class="size-label" for="pen-size">Grubość</label><input type="range" id="pen-size" min="1" max="12" step="1" value="4" aria-label="Grubość linii">
+                  <button class="tool-btn toolbar-end" type="button" id="clear-ink" title="Wyczyść podgląd" aria-label="Wyczyść rysunek"><svg class="ico"><use href="#i-trash"></use></svg></button>
+                </div>
+                <div class="drawing-area"><div class="paper-sheet lines" id="paper-sheet"><div class="paper-guides"><div class="paper-heading-small">NA NOTATECZKI / PRÓBA PISMA</div><div class="paper-instruction">Spróbuj coś napisać.</div></div><canvas id="ink-canvas" aria-label="Pole do rysowania myszą, palcem lub rysikiem"></canvas></div></div>
+                <div class="paper-controls"><span class="control-title">Tło strony</span><div class="segmented" role="group" aria-label="Rodzaj tła"><button type="button" data-background="blank">Gładkie</button><button type="button" data-background="grid">Kratka</button><button type="button" data-background="lines" class="active">Linie</button></div><label class="density-label" for="background-density">Gęstość <input id="background-density" type="range" min="20" max="44" value="28" step="2"></label></div>
+              </article>
+              <div class="widget-aside">
+                <article class="widget-panel palette-widget"><div class="widget-heading"><div><span class="panel-number">02 / KOLORY</span><h2>Zestawy kolorów</h2></div></div><p class="panel-desc">Trzy stopnie kontrastu — zgodne z paletami narzędzi w aplikacji.</p><div class="palette-list"><button type="button" class="palette-choice selected" data-palette="blue"><span>Niebieski</span><span class="palette-dots"><i style="--dot:#03223A"></i><i style="--dot:#083F69"></i><i style="--dot:#7DADC8"></i></span></button><button type="button" class="palette-choice" data-palette="pink"><span>Różowy</span><span class="palette-dots"><i style="--dot:#823C44"></i><i style="--dot:#D8798A"></i><i style="--dot:#EAA6AE"></i></span></button><button type="button" class="palette-choice" data-palette="green"><span>Zielony</span><span class="palette-dots"><i style="--dot:#273526"></i><i style="--dot:#45624E"></i><i style="--dot:#CADFB8"></i></span></button></div></article>
+                <article class="widget-panel board-widget" id="widget-board"><div class="widget-heading"><div><span class="panel-number">03 / TABLICA</span><h2>Swobodne rozmieszczenie</h2></div></div><div class="board-sample"><div class="board-grid"><div class="board-node node-a">Pomysł</div><div class="board-line line-a"></div><div class="board-node node-b">Szkic</div><div class="board-node node-c">Plan</div><div class="board-line line-b"></div></div></div><p class="panel-footnote">Układ demonstracyjny tablicy, inspirowany edytorem.</p></article>
+              </div>
+              <article class="widget-panel planner-widget" id="widget-calendar"><div class="widget-heading"><div><span class="panel-number">04 / ORGANIZACJA NAUKI</span><h2>Kalendarz i sesje</h2></div><span class="panel-info">Podgląd miesiąca</span></div><div class="calendar-layout"><div class="calendar-block"><div class="calendar-head"><strong id="calendar-month"></strong><div><button class="icon-button" type="button" id="prev-month" aria-label="Poprzedni miesiąc"><svg class="ico"><use href="#i-chevron-left"></use></svg></button><button class="icon-button" type="button" id="next-month" aria-label="Następny miesiąc"><svg class="ico"><use href="#i-chevron-right"></use></svg></button></div></div><div class="calendar-weekdays"><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span></div><div class="calendar-days" id="calendar-days" aria-label="Kalendarz miesięczny"></div></div><div class="study-block"><div class="study-head">Sesja nauki<span>Podgląd</span></div><div class="study-time">50:00</div><div class="study-time-label">Czas na skupienie</div><div class="study-meter"><span></span></div><div class="study-task"><span class="study-task-indicator"></span><span>Powtórka materiału</span><small>50 min</small></div><div class="study-task"><span class="study-task-indicator muted"></span><span>Notatki z wykładu</span><small>30 min</small></div></div></div></article>
+            </div>
+            <p class="demo-disclaimer">Widżety na tej stronie są pokazowymi elementami interfejsu. Pełne funkcje i zapis danych są dostępne w aplikacji.</p>
+          </div>
+        </section>
+        <section class="view" id="page-pobierz" aria-labelledby="download-heading" hidden>
+          <div class="page-content narrow-content">
+            <div class="page-intro"><p class="section-kicker">DOSTĘPNOŚĆ</p><h1 id="download-heading">Wypróbuj i pobierz</h1><p>Wybierz wersję przeglądarkową lub system, na którym chcesz korzystać z NaNotateczki.</p></div>
+            <div class="web-try-card"><div class="web-try-icon"><svg class="ico"><use href="#i-globe"></use></svg></div><div><span class="panel-number">WERSJA PRZEGLĄDARKOWA</span><h2>NaNotateczki web</h2><p>Uruchom aplikację w przeglądarce, bez instalowania programu.</p></div><a id="web-app-link" class="btn btn-primary" href="#" aria-disabled="true">Wkrótce</a></div>
+            <h2 class="downloads-heading">Aplikacja na urządzenia</h2><div class="downloads-list">
+              <div class="download-row" data-platform="windows"><span class="platform-icon"><svg class="ico"><use href="#i-monitor"></use></svg></span><div><h3>Windows</h3><p>Instalator .exe lub .msi</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
+              <div class="download-row" data-platform="linux"><span class="platform-icon"><svg class="ico"><use href="#i-terminal"></use></svg></span><div><h3>Linux</h3><p>Pakiet .AppImage lub .deb</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
+              <div class="download-row" data-platform="android"><span class="platform-icon"><svg class="ico"><use href="#i-phone"></use></svg></span><div><h3>Android</h3><p>Pakiet .apk</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
+              <div class="download-row" data-platform="macos"><span class="platform-icon"><svg class="ico"><use href="#i-laptop"></use></svg></span><div><h3>macOS</h3><p>Instalator .dmg lub .pkg</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
+            </div>
+            <div class="install-guide"><div class="guide-heading"><svg class="ico"><use href="#i-info"></use></svg><div><h2>Jak zainstalować aplikację?</h2><p>Informacje przydatne po udostępnieniu plików instalacyjnych.</p></div></div>
+              <div class="guide-steps"><div><span class="step-num">01</span><p>Pobierz instalator przeznaczony dla swojego systemu z tej strony.</p></div><div><span class="step-num">02</span><p>Otwórz pobrany plik i postępuj zgodnie z instrukcjami systemu.</p></div><div><span class="step-num">03</span><p>Jeżeli system wyświetli ostrzeżenie o nierozpoznanym wydawcy, upewnij się, że plik pochodzi z oficjalnego źródła.</p></div></div>
+              <details class="security-details"><summary>Dlaczego system może ostrzegać przed instalacją? <svg class="ico"><use href="#i-chevron-down"></use></svg></summary><div><p>NaNotateczki jest niezależnym projektem. Niepodpisane cyfrowo lub jeszcze nierozpoznane instalatory mogą wywoływać ostrzeżenia Windows SmartScreen, macOS Gatekeeper albo Androida. Sam komunikat nie przesądza, czy plik jest szkodliwy, ale nie należy go ignorować bez weryfikacji źródła.</p><p><strong>Windows:</strong> komunikat „System Windows ochronił ten komputer” może udostępniać opcję „Więcej informacji”. Kontynuuj tylko wtedy, gdy plik pobrano z tej strony i masz pewność co do jego pochodzenia.</p><p><strong>Android:</strong> przy instalacji APK poza sklepem system może poprosić o zgodę dla aplikacji instalującej plik. Udzielaj jej wyłącznie zaufanemu źródłu.</p><p><strong>macOS:</strong> w przypadku blokady sprawdź informacje o pochodzeniu programu w „Prywatność i ochrona”. <strong>Linux:</strong> AppImage może wymagać nadania uprawnienia wykonywania pliku.</p></div></details>
+            </div>
+          </div>
+        </section>
+        <section class="view" id="page-kontakt" aria-labelledby="contact-heading" hidden>
+          <div class="page-content narrow-content">
+            <div class="page-intro"><p class="section-kicker">POMOC I INFORMACJE</p><h1 id="contact-heading">Kontakt</h1><p>Masz pytanie dotyczące NaNotateczki albo chcesz zgłosić problem z działaniem aplikacji?</p></div>
+            <div class="contact-card"><div class="contact-icon"><svg class="ico"><use href="#i-mail"></use></svg></div><div class="contact-message"><h2>Napisz do mnie.</h2><p>Jeśli napotkasz błąd, coś nie działa zgodnie z oczekiwaniami lub masz sugestię dotyczącą projektu, możesz skontaktować się ze mną bezpośrednio. Postaram się pomóc i przyjrzeć zgłoszeniu.</p><div class="contact-author"><span>Twórczyni NaNotateczki</span><strong>Zuzanna Baran</strong></div><a class="contact-email" href="mailto:baran_zuzanna@outlook.com?subject=NaNotateczki%20%E2%80%94%20zg%C5%82oszenie">baran_zuzanna@outlook.com <svg class="ico"><use href="#i-arrow-up-right"></use></svg></a></div></div>
+            <div class="contact-tip"><svg class="ico"><use href="#i-info"></use></svg><p>Przy zgłoszeniu błędu warto podać system operacyjny, krótki opis problemu i kroki potrzebne do jego odtworzenia. Nie przesyłaj haseł ani prywatnych danych.</p></div>
+          </div>
+        </section>
+      </main>
+      <footer class="workspace-footer"><span>© <span id="copyright-year"></span> NaNotateczki</span><span>Projekt: Zuzanna Baran</span></footer>
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-defs" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-notebook" viewBox="0 0 24 24"><rect x="5" y="3" width="16" height="18" rx="2"/><path d="M9 3v18M3 7h4M3 12h4M3 17h4"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="m4 20 5-1 11-11-4-4L5 15zM14 6l4 4M4 20l5-1"/></symbol>
+    <symbol id="i-highlighter" viewBox="0 0 24 24"><path d="m3 21 6-2 11-11-4-4L5 15zM15 5l4 4M3 21h18"/></symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 15 9-10a2 2 0 0 1 3 0l4 4a2 2 0 0 1 0 3l-8 8H8zM9 10l7 7M12 20h9"/></symbol>
+    <symbol id="i-shape" viewBox="0 0 24 24"><rect x="3" y="3" width="12" height="12" rx="1"/><circle cx="16.5" cy="16.5" r="4.5"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6V4h16v2M12 4v16m-4 0h8"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 14h3v3H8z"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h6M7 12h10M7 16h4"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M8 5h11v11"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5M4 9h10a6 6 0 0 1 0 12h-2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 4h4m-8 3 1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-6 6-6 12 0 18m0-18c6 6 6 12 0 18"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8m-4-4v4"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="m7 9 3 3-3 3m6 0h4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="13" rx="1"/><path d="M2 20h20l-2-3H4z"/></symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m5 9 7 7 7-7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15A9 9 0 0 1 9 4 9 9 0 1 0 20 15Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  </svg>
+</body>
+</html>
