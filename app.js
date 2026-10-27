@@ -396,7 +396,7 @@
     demoSmart = smart;
     demoSeconds = smart ? demoFocusSeconds : 50 * 60;
     $('#demo-session-name').textContent =
-      smart ? 'Smart session · Pomodoro 25/5' : 'Powtórka materiału';
+      smart ? 'Smart session' : 'Powtórka materiału';
     $('#demo-pomodoro-tag').hidden = !smart;
     $('#demo-pause-session').disabled = false;
     $('#demo-timer-idle').hidden = true;
