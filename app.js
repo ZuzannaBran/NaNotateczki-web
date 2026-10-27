@@ -114,6 +114,15 @@
       button.style.background = inkColor(button.dataset.color);
     });
     redraw();
+    const demo = $('#flutter-demo-frame');
+    if (demo && demo.getAttribute('src')) {
+      const demoUrl = new URL(demo.src);
+      const nextTheme = isDark ? 'dark' : 'light';
+      if (demoUrl.searchParams.get('theme') !== nextTheme) {
+        demoUrl.searchParams.set('theme', nextTheme);
+        demo.src = demoUrl.href;
+      }
+    }
     try { localStorage.setItem('nanotateczki-site-theme', theme); } catch (_) { /* private mode */ }
   }
   let initialTheme = 'light';
@@ -342,6 +351,34 @@
     const available = configureLink($('.download-action', row), (config.downloads || {})[key], 'Pobierz ↗', 'Niedostępne');
     $('.availability-label', row).textContent = available ? 'Dostępne' : 'Wkrótce';
   });
+
+  // A real Flutter Web build is published as static output in demo/.
+  // Never load the private Dart source or fake Flutter with JavaScript.
+  async function activateFlutterDemo() {
+    try {
+      const bootstrap = new URL('demo/flutter_bootstrap.js', window.location.href);
+      const result = await fetch(bootstrap.href, {
+        method: 'HEAD',
+        cache: 'no-store'
+      });
+      if (!result.ok) return;
+
+      const iframe = $('#flutter-demo-frame');
+      const demoUrl = new URL('demo/index.html', window.location.href);
+      demoUrl.searchParams.set(
+        'theme',
+        document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
+      );
+      iframe.src = demoUrl.href;
+      $('#flutter-demo').hidden = false;
+      $('.writing-widget').classList.add('has-flutter');
+      $('#widget-engine-status').textContent = 'Oryginalny edytor Flutter';
+    } catch (error) {
+      // Preview remains usable before the real Flutter bundle is published.
+      console.info('Moduł Flutter nie został jeszcze opublikowany.', error);
+    }
+  }
+  void activateFlutterDemo();
 
   $('#copyright-year').textContent = new Date().getFullYear();
 })();
