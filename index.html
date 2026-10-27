@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#E4E2DD">
-  <meta name="description" content="NaNotateczki — notatniki, tablice, planowanie nauki i odręczne notatki w jednym miejscu. Poznaj funkcje, wypróbuj wersję web i pobierz aplikację.">
-  <title>NaNotateczki — notatki, tablice i plan nauki</title>
+  <meta name="description" content="NaNotateczki — odręczne notatki, notatniki, kalendarz i organizacja nauki. Poznaj funkcje, wypróbuj wersję web i pobierz aplikację.">
+  <title>NaNotateczki — notatki i plan nauki</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
   <script defer src="config.js"></script>
@@ -17,7 +17,7 @@
     <div class="mobile-shade" id="mobile-shade" hidden></div>
     <aside class="sidebar" id="sidebar" aria-label="Nawigacja">
       <div class="sidebar-header">
-        <a href="#start" class="brand" aria-label="NaNotateczki — strona główna"><span class="brand-mark" aria-hidden="true">N<span class="brand-pen">N</span></span><span>NaNotateczki</span></a>
+        <a href="#start" class="brand" aria-label="NaNotateczki — strona główna"><span>NaNotateczki</span></a>
         <button class="icon-button mobile-close" type="button" id="close-menu" aria-label="Zamknij menu"><svg class="ico"><use href="#i-close"></use></svg></button>
       </div>
       <div class="sidebar-scroll">
@@ -28,15 +28,6 @@
           <a class="nav-link" href="#pobierz" data-route="pobierz"><svg class="ico"><use href="#i-download"></use></svg><span>Wypróbuj i pobierz</span></a>
           <a class="nav-link" href="#kontakt" data-route="kontakt"><svg class="ico"><use href="#i-mail"></use></svg><span>Kontakt</span></a>
         </nav>
-        <div class="side-separator"></div>
-        <p class="nav-label">NaNotateczki</p>
-        <div class="project-note">
-          <span class="project-note-icon"><svg class="ico"><use href="#i-notebook"></use></svg></span>
-          <div><strong>Własna przestrzeń do pracy</strong><span>Notatniki · Tablice · Kalendarz</span></div>
-        </div>
-      </div>
-      <div class="sidebar-footer">
-        <div class="small-credit"><span class="credit-avatar">ZB</span><span>Projekt i wykonanie<strong>Zuzanna Baran</strong></span></div>
       </div>
     </aside>
     <div class="workspace">
@@ -105,9 +96,37 @@
               </article>
               <div class="widget-aside">
                 <article class="widget-panel palette-widget"><div class="widget-heading"><div><span class="panel-number">02 / KOLORY</span><h2>Zestawy kolorów</h2></div></div><p class="panel-desc">Trzy stopnie kontrastu — zgodne z paletami narzędzi w aplikacji.</p><div class="palette-list"><button type="button" class="palette-choice selected" data-palette="blue"><span>Niebieski</span><span class="palette-dots"><i style="--dot:#03223A"></i><i style="--dot:#083F69"></i><i style="--dot:#7DADC8"></i></span></button><button type="button" class="palette-choice" data-palette="pink"><span>Różowy</span><span class="palette-dots"><i style="--dot:#823C44"></i><i style="--dot:#D8798A"></i><i style="--dot:#EAA6AE"></i></span></button><button type="button" class="palette-choice" data-palette="green"><span>Zielony</span><span class="palette-dots"><i style="--dot:#273526"></i><i style="--dot:#45624E"></i><i style="--dot:#CADFB8"></i></span></button></div></article>
-                <article class="widget-panel board-widget" id="widget-board"><div class="widget-heading"><div><span class="panel-number">03 / TABLICA</span><h2>Swobodne rozmieszczenie</h2></div></div><div class="board-sample"><div class="board-grid"><div class="board-node node-a">Pomysł</div><div class="board-line line-a"></div><div class="board-node node-b">Szkic</div><div class="board-node node-c">Plan</div><div class="board-line line-b"></div></div></div><p class="panel-footnote">Układ demonstracyjny tablicy, inspirowany edytorem.</p></article>
+                <article class="widget-panel calendar-preview-widget" id="widget-calendar">
+                  <div class="widget-heading"><div><span class="panel-number">03 / KALENDARZ I NAUKA</span><h2>Kalendarz i study sessions</h2></div></div>
+                  <div class="mini-planner">
+                    <div class="mini-planner-top"><strong>Calendar</strong><div class="mini-planner-modes" aria-label="Widok miesiąca"><span>Day</span><span>Week</span><strong>Month</strong></div></div>
+                    <div class="calendar-head"><strong id="calendar-month"></strong><div><button class="icon-button" type="button" id="prev-month" aria-label="Poprzedni miesiąc"><svg class="ico"><use href="#i-chevron-left"></use></svg></button><button class="icon-button" type="button" id="next-month" aria-label="Następny miesiąc"><svg class="ico"><use href="#i-chevron-right"></use></svg></button></div></div>
+                    <div class="calendar-weekdays" aria-hidden="true"><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span></div>
+                    <div class="calendar-days" id="calendar-days" aria-label="Przykładowy kalendarz miesięczny"></div>
+                  </div>
+                  <div class="mini-study" id="widget-study">
+                    <div class="mini-study-heading"><strong>Study timer</strong><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg></div>
+                    <div id="demo-timer-idle">
+                      <p>Ready for your next focus session?</p>
+                      <div class="mini-study-actions"><button class="mini-study-primary" id="demo-start-session" type="button"><svg class="ico" aria-hidden="true"><use href="#i-play"></use></svg>Start session</button><button id="demo-smart-session" type="button"><svg class="ico" aria-hidden="true"><use href="#i-shape"></use></svg>Smart</button></div>
+                    </div>
+                    <div id="demo-timer-active" hidden>
+                      <p class="mini-study-name" id="demo-session-name">Powtórka materiału</p><strong class="mini-study-countdown" id="demo-session-time">50:00</strong><span class="mini-study-phase" id="demo-session-phase">Focus</span>
+                      <div class="mini-study-actions"><button id="demo-pause-session" type="button">Pause</button><button id="demo-stop-session" type="button">Stop</button></div>
+                    </div>
+                  </div>
+                  <p class="mini-demo-footnote">Przykładowy kalendarz i timer. Bez zapisu sesji do aplikacji.</p>
+                </article>
               </div>
-              <article class="widget-panel planner-widget" id="widget-calendar"><div class="widget-heading"><div><span class="panel-number">04 / ORGANIZACJA NAUKI</span><h2>Kalendarz i sesje</h2></div><span class="panel-info">Podgląd miesiąca</span></div><div class="calendar-layout"><div class="calendar-block"><div class="calendar-head"><strong id="calendar-month"></strong><div><button class="icon-button" type="button" id="prev-month" aria-label="Poprzedni miesiąc"><svg class="ico"><use href="#i-chevron-left"></use></svg></button><button class="icon-button" type="button" id="next-month" aria-label="Następny miesiąc"><svg class="ico"><use href="#i-chevron-right"></use></svg></button></div></div><div class="calendar-weekdays"><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span></div><div class="calendar-days" id="calendar-days" aria-label="Kalendarz miesięczny"></div></div><div class="study-block" id="widget-study"><div class="study-head">Sesja nauki<span>Podgląd</span></div><div class="study-time">50:00</div><div class="study-time-label">Czas na skupienie</div><div class="study-meter"><span></span></div><div class="study-task"><span class="study-task-indicator"></span><span>Powtórka materiału</span><small>50 min</small></div><div class="study-task"><span class="study-task-indicator muted"></span><span>Notatki z wykładu</span><small>30 min</small></div></div></div></article>
+              <article class="widget-panel tools-widget" id="widget-tools">
+                <div class="widget-heading"><div><span class="panel-number">04 / NARZĘDZIA EDYTORA</span><h2>Od swobodnego pisania do gotowej notatki</h2></div></div>
+                <div class="tools-feature-grid">
+                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-eraser"></use></svg></div><h3>Trzy sposoby wymazywania</h3><p><strong>Gumka pędzlowa</strong> usuwa fragment kreski, <strong>gumka do kreski</strong> usuwa ją w całości, a <strong>gumka obszarowa</strong> pozwala zamazać zaznaczony ruchem obszar.</p><div class="tools-keywords"><span>Pędzel</span><span>Kreska</span><span>Obszar</span></div></div>
+                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-shape"></use></svg></div><h3>Prostowanie i kształty</h3><p>Rysuj odręcznie i <strong>przytrzymaj rysik na końcu ruchu</strong>, aby rozpoznać linię lub obsługiwany kształt. Możesz też wstawiać precyzyjne linie, strzałki, prostokąty, trójkąty i okręgi z paska narzędzi.</p><svg class="shape-demo" aria-label="Przykładowa prosta, prostokąt i okrąg" viewBox="0 0 270 42" role="img"><path d="M9 31 L78 10" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="103" y="7" width="62" height="27" rx="1" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="220" cy="21" r="16" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-notebook"></use></svg></div><h3>Dodawanie i edycja dokumentów</h3><p>Wstawiaj <strong>PDF-y i obrazy</strong> do notatki, zmieniaj ich położenie i rozmiar oraz dodawaj do nich własne pismo, zaznaczenia i tekst.</p><div class="tools-keywords"><span>PDF</span><span>Obrazy</span><span>Tekst</span></div></div>
+                  <div class="tools-feature"><div class="tools-feature-icon"><svg class="ico"><use href="#i-download"></use></svg></div><h3>Eksport notatek</h3><p>Zapisuj efekty pracy jako <strong>PDF lub PNG</strong>. Eksport uwzględnia zawartość stron oraz aktualny wygląd notatnika.</p><div class="tools-keywords"><span>PDF</span><span>PNG</span></div></div>
+                </div>
+              </article>
             </div>
             <p class="demo-disclaimer">Notatnik automatycznie użyje oryginalnego edytora Flutter, gdy jego skompilowane pliki zostaną opublikowane w katalogu <code>demo/</code>. Pozostałe widżety to wizualizacje.</p>
           </div>
@@ -121,6 +140,7 @@
               <div class="download-row" data-platform="linux"><span class="platform-icon"><svg class="ico"><use href="#i-terminal"></use></svg></span><div><h3>Linux</h3><p>Pakiet .AppImage lub .deb</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
               <div class="download-row" data-platform="android"><span class="platform-icon"><svg class="ico"><use href="#i-phone"></use></svg></span><div><h3>Android</h3><p>Pakiet .apk</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
               <div class="download-row" data-platform="macos"><span class="platform-icon"><svg class="ico"><use href="#i-laptop"></use></svg></span><div><h3>macOS</h3><p>Instalator .dmg lub .pkg</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" href="#" aria-disabled="true">Niedostępne</a></div>
+              <div class="download-row" data-platform="ios"><span class="platform-icon"><svg class="ico"><use href="#i-phone"></use></svg></span><div><h3>iOS / iPadOS</h3><p>App Store lub TestFlight</p></div><span class="availability-label">Wkrótce</span><a class="download-action btn btn-outline" aria-disabled="true">Niedostępne</a></div>
             </div>
             <div class="install-guide"><div class="guide-heading"><svg class="ico"><use href="#i-info"></use></svg><div><h2>Jak zainstalować aplikację?</h2><p>Informacje przydatne po udostępnieniu plików instalacyjnych.</p></div></div>
               <div class="guide-steps"><div><span class="step-num">01</span><p>Pobierz instalator przeznaczony dla swojego systemu z tej strony.</p></div><div><span class="step-num">02</span><p>Otwórz pobrany plik i postępuj zgodnie z instrukcjami systemu.</p></div><div><span class="step-num">03</span><p>Jeżeli system wyświetli ostrzeżenie o nierozpoznanym wydawcy, upewnij się, że plik pochodzi z oficjalnego źródła.</p></div></div>
@@ -131,7 +151,7 @@
         <section class="view" id="page-kontakt" aria-labelledby="contact-heading" hidden>
           <div class="page-content narrow-content">
             <div class="page-intro"><p class="section-kicker">POMOC I INFORMACJE</p><h1 id="contact-heading">Kontakt</h1><p>Masz pytanie dotyczące NaNotateczki albo chcesz zgłosić problem z działaniem aplikacji?</p></div>
-            <div class="contact-card"><div class="contact-icon"><svg class="ico"><use href="#i-mail"></use></svg></div><div class="contact-message"><h2>Napisz do mnie.</h2><p>Jeśli napotkasz błąd, coś nie działa zgodnie z oczekiwaniami lub masz sugestię dotyczącą projektu, możesz skontaktować się ze mną bezpośrednio. Postaram się pomóc i przyjrzeć zgłoszeniu.</p><div class="contact-author"><span>Twórczyni NaNotateczki</span><strong>Zuzanna Baran</strong></div><a class="contact-email" href="mailto:baran_zuzanna@outlook.com?subject=NaNotateczki%20%E2%80%94%20zg%C5%82oszenie">baran_zuzanna@outlook.com <svg class="ico"><use href="#i-arrow-up-right"></use></svg></a></div></div>
+            <div class="contact-card"><div class="contact-icon"><svg class="ico"><use href="#i-mail"></use></svg></div><div class="contact-message"><h2>Napisz do mnie.</h2><p>Jeśli napotkasz błąd, coś nie działa zgodnie z oczekiwaniami lub masz sugestię dotyczącą projektu, możesz skontaktować się ze mną bezpośrednio. Postaram się pomóc i przyjrzeć zgłoszeniu.</p><div class="contact-author"><strong>Zuzanna Baran</strong></div><a class="contact-email" href="mailto:baran_zuzanna@outlook.com?subject=NaNotateczki%20%E2%80%94%20zg%C5%82oszenie">baran_zuzanna@outlook.com <svg class="ico"><use href="#i-arrow-up-right"></use></svg></a></div></div>
             <div class="contact-tip"><svg class="ico"><use href="#i-info"></use></svg><p>Przy zgłoszeniu błędu warto podać system operacyjny, krótki opis problemu i kroki potrzebne do jego odtworzenia. Nie przesyłaj haseł ani prywatnych danych.</p></div>
           </div>
         </section>
