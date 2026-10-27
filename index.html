@@ -105,13 +105,13 @@
                     <div class="calendar-days" id="calendar-days" aria-label="Przykładowy kalendarz miesięczny"></div>
                   </div>
                   <div class="mini-study" id="widget-study">
-                    <div class="mini-study-heading"><strong>Study timer</strong><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg></div>
+                    <div class="mini-study-heading"><strong>Study timer</strong></div>
                     <div id="demo-timer-idle">
                       <p>Ready for your next focus session?</p>
-                      <div class="mini-study-actions"><button class="mini-study-primary" id="demo-start-session" type="button"><svg class="ico" aria-hidden="true"><use href="#i-play"></use></svg>Start session</button><button id="demo-smart-session" type="button"><svg class="ico" aria-hidden="true"><use href="#i-shape"></use></svg>Smart</button></div>
+                      <div class="mini-study-actions"><button class="mini-study-primary" id="demo-start-session" type="button"><svg class="ico" aria-hidden="true"><use href="#i-play"></use></svg>Start session</button><button id="demo-smart-session" type="button" title="Smart session — Pomodoro 25/5" aria-label="Smart session — Pomodoro 25 minut skupienia i 5 minut przerwy"><svg class="ico" aria-hidden="true"><use href="#i-sparkles"></use></svg>Smart</button></div><p class="mini-smart-hint">Smart · Pomodoro 25 min pracy / 5 min przerwy</p>
                     </div>
                     <div id="demo-timer-active" hidden>
-                      <p class="mini-study-name" id="demo-session-name">Powtórka materiału</p><strong class="mini-study-countdown" id="demo-session-time">50:00</strong><span class="mini-study-phase" id="demo-session-phase">Focus</span>
+                      <p class="mini-study-name" id="demo-session-name">Powtórka materiału</p><span class="mini-pomodoro-tag" id="demo-pomodoro-tag" hidden>Pomodoro · 25/5</span><strong class="mini-study-countdown" id="demo-session-time">50:00</strong><span class="mini-study-phase" id="demo-session-phase">Focus</span>
                       <div class="mini-study-actions"><button id="demo-pause-session" type="button">Pause</button><button id="demo-stop-session" type="button">Stop</button></div>
                     </div>
                   </div>
@@ -125,7 +125,7 @@
                 <div class="tools-feature-list">
                   <div class="tools-feature-row">
                     <h3>Cztery sposoby wymazywania</h3>
-                    <p>Usuwaj fragmenty gumką pędzlową, całe kreski gumką kreskową, wybrany zakres gumką obszarową albo zamazuj niepotrzebne pismo bazgrołami.</p>
+                    <p><strong>Eraser brush</strong> usuwa fragmenty kresek, <strong>Erase stroke</strong> całe kreski, <strong>Erase area</strong> wybrany obszar, a <strong>Scratch erase</strong> pozwala wymazać pismo przez zamazywanie bazgrołami.</p>
                   </div>
                   <div class="tools-feature-row">
                     <h3>Linie i kształty</h3>
@@ -182,6 +182,7 @@
     <symbol id="i-highlighter" viewBox="0 0 24 24"><path d="m3 21 6-2 11-11-4-4L5 15zM15 5l4 4M3 21h18"/></symbol>
     <symbol id="i-eraser" viewBox="0 0 24 24"><path d="m4 15 9-10a2 2 0 0 1 3 0l4 4a2 2 0 0 1 0 3l-8 8H8zM9 10l7 7M12 20h9"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></symbol>
     <symbol id="i-shape" viewBox="0 0 24 24"><rect x="3" y="3" width="12" height="12" rx="1"/><circle cx="16.5" cy="16.5" r="4.5"/></symbol>
     <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6V4h16v2M12 4v16m-4 0h8"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 14h3v3H8z"/></symbol>
