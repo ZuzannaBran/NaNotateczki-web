@@ -305,7 +305,7 @@
       if (description) {
         const bar = document.createElement('span');
         bar.className = 'mini-calendar-entry' +
-          (day === 12 ? ' alt' : day === 27 ? ' pink' : '');
+          (day === 12 ? ' alt' : day === 19 ? ' light' : day === 27 ? ' alt' : '');
         bar.setAttribute('aria-hidden', 'true');
         button.appendChild(bar);
       }
