@@ -20,7 +20,6 @@ export function createDrawingPreview(getTheme: () => Theme): DrawingPreview {
   const canvas = element<HTMLCanvasElement>('#ink-canvas');
   const sheet = element<HTMLElement>('#paper-sheet');
   const thickness = element<HTMLInputElement>('#pen-size');
-  const density = element<HTMLInputElement>('#background-density');
   const context = canvas.getContext('2d');
   if (!context) throw new Error('Canvas 2D is not supported');
 
@@ -178,7 +177,6 @@ export function createDrawingPreview(getTheme: () => Theme): DrawingPreview {
     const name = button.dataset.background;
     if (name === 'blank' || name === 'grid' || name === 'lines') setBackground(name);
   }));
-  density.addEventListener('input', () => sheet.style.setProperty('--bg-spacing', `${density.value}px`));
   setBackground('lines');
   selectColor(0);
   refreshColors();
