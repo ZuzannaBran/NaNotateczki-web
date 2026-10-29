@@ -157,7 +157,6 @@ h1,h2,h3,p{margin-top:0}
 .widget-heading{padding:24px 25px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .widget-heading .panel-number{display:block;margin-bottom:6px;font-size:10px}
 .widget-heading h2{font-size:19px;font-weight:500;margin:0;line-height:1.3}
-.panel-info{font-size:10px;color:var(--muted);white-space:nowrap}
 .writing-widget{min-width:0}
 .drawing-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 20px 16px;padding:6px 10px;background:var(--toolbar);border-radius:12px;border:1px solid var(--divider);min-height:50px}
 .tool-set{display:flex;align-items:center;gap:2px}
@@ -173,7 +172,7 @@ h1,h2,h3,p{margin-top:0}
 #pen-size{width:68px}
 input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .toolbar-end{margin-left:auto}
-.drawing-area{padding:17px 25px;background:var(--toolbar);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider)}
+.drawing-area{padding:17px 25px;background:var(--paper);border-top:1px solid var(--divider);border-bottom:1px solid var(--divider)}
 .paper-sheet{position:relative;width:100%;aspect-ratio:1.45;min-height:240px;border:1px solid var(--divider);background-color:var(--paper);overflow:hidden;--bg-spacing:28px;touch-action:none}
 .paper-sheet.lines{background-image:repeating-linear-gradient(to bottom,transparent,transparent calc(var(--bg-spacing) - 1px),var(--line-ink) calc(var(--bg-spacing) - 1px),var(--line-ink) var(--bg-spacing))}
 .paper-sheet.grid{background-image:linear-gradient(to right,var(--line-ink) 1px,transparent 1px),linear-gradient(to bottom,var(--line-ink) 1px,transparent 1px);background-size:var(--bg-spacing) var(--bg-spacing)}
@@ -312,9 +311,8 @@ input[type="range"]{accent-color:var(--text);height:14px;cursor:pointer}
 .flutter-demo{padding:0 18px 16px}
 .flutter-demo iframe{display:block;width:100%;height:650px;border:1px solid var(--divider);border-radius:12px;background:var(--background)}
 .flutter-demo-caption{margin:10px 2px 0;color:var(--muted);font-size:11px;line-height:1.65}
-.html-demo-note{margin:0 20px 14px;padding:10px 12px;background:var(--toolbar);border:1px solid var(--divider);border-radius:10px;font-size:11px;color:var(--muted);line-height:1.65}
 .has-flutter .drawing-toolbar,.has-flutter .drawing-area,
-.has-flutter .paper-controls,.has-flutter .html-demo-note{display:none!important}
+.has-flutter .paper-controls{display:none!important}
 @media(max-width:750px){.flutter-demo{padding:0 10px 12px}.flutter-demo iframe{height:590px}}
 @media(max-width:580px){.flutter-demo iframe{height:530px}}
 

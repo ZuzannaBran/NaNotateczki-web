@@ -134,7 +134,6 @@ export async function detectFlutterDemo(theme: Theme): Promise<void> {
     iframe.src = url.href;
     element<HTMLElement>('#flutter-demo').hidden = false;
     element<HTMLElement>('.writing-widget').classList.add('has-flutter');
-    setText('#widget-engine-status', 'Oryginalny edytor Flutter');
   } catch (error) {
     console.info('Moduł Flutter nie został jeszcze opublikowany.', error);
   }
