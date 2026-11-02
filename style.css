@@ -1,5 +1,20 @@
 /* NaNotateczki — values mirrored from lib/core/theme/app_colors.dart,
    app_typography.dart and app_theme.dart (repository NaNotateczki, dev). */
+@font-face {
+  font-family: "Gelasio";
+  src: url("./assets/fonts/Gelasio-Variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gelasio";
+  src: url("./assets/fonts/Gelasio-Italic-Variable.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --background:#F1F0EC; --toolbar:#E4E2DD; --paper:#FAF9F6;
@@ -30,8 +45,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--background);color:var(--text);font-family:Georgia,"Times New Roman","Noto Serif",serif;font-size:14px;line-height:1.55}
-button,input{font:inherit}
+body{margin:0;background:var(--background);color:var(--text);font-family:"Gelasio",Georgia,"Noto Serif","DejaVu Serif","Liberation Serif","Times New Roman",serif;font-size:14px;line-height:1.55}
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
@@ -45,7 +60,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{o
 .sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;min-width:0;background:var(--toolbar);border-right:1px solid var(--divider);z-index:15}
 .sidebar-header{height:56px;min-height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 23px;border-bottom:1px solid var(--divider)}
 .brand{display:flex;align-items:center;gap:12px;font-size:18px;white-space:nowrap;font-weight:600;letter-spacing:normal}
-.brand-mark{border:1.5px solid currentColor;width:30px;height:30px;border-radius:8px;font-family:Georgia,serif;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-style:italic;letter-spacing:-4px;padding-right:4px}
+.brand-mark{border:1.5px solid currentColor;width:30px;height:30px;border-radius:8px;font-family:inherit;font-size:15px;display:inline-flex;align-items:center;justify-content:center;font-style:italic;letter-spacing:-4px;padding-right:4px}
 .brand-pen{transform:translateY(1px)}
 .sidebar-scroll{flex:1;overflow:auto;padding:29px 14px 20px;scrollbar-width:none}
 .sidebar-scroll::-webkit-scrollbar{display:none}

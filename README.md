@@ -19,6 +19,8 @@ Otwórz `http://localhost:8000`. Polecenie `npm run check` sprawdza typy, kompil
 - `src/` — kod TypeScript: nawigacja, motywy, rysowanie, kalendarz, timer i pobieranie.
 - `assets/js/` — skompilowane moduły ES wersjonowane dla GitHub Pages.
 - `index.html`, `style.css` — struktura i wygląd witryny.
+- `assets/fonts/` — lokalna czcionka Gelasio (zbliżona do Georgia),
+  wykorzystywana na wszystkich systemach; licencja SIL OFL w `OFL.txt`.
 - `src/config.ts` — oficjalne linki do aplikacji i instalatorów (puste do czasu publikacji).
 - `demo/` — opcjonalny build edytora Flutter; szczegóły w [instrukcji dla Codexa](CODEX_FLUTTER_WIDGET.md).
 
